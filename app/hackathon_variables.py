@@ -4,22 +4,22 @@ import os
 
 from django.utils import timezone
 
-HACKATHON_NAME = 'HackUPC'
+HACKATHON_NAME = 'HackWashU'
 # What's the name for the application
-HACKATHON_APPLICATION_NAME = 'My HackUPC'
+HACKATHON_APPLICATION_NAME = 'My HackWashU'
 # Hackathon timezone
-TIME_ZONE = 'CET'
+TIME_ZONE = 'America/Chicago'
 # This description will be used on the html and sharing meta tags
-HACKATHON_DESCRIPTION = 'Join us for BarcelonaTech\'s hackathon. 36h. 29th April - 1st May.'
+HACKATHON_DESCRIPTION = 'HackWashU is taking place from Octover 14th to 16th.'
 # Domain where application is deployed, can be set by env variable
 HACKATHON_DOMAIN = os.environ.get('DOMAIN', None)
 HEROKU_APP_NAME = os.environ.get('HEROKU_APP_NAME', None)
 if HEROKU_APP_NAME and not HACKATHON_DOMAIN:
     HACKATHON_DOMAIN = '%s.herokuapp.com' % HEROKU_APP_NAME
 elif not HACKATHON_DOMAIN:
-    HACKATHON_DOMAIN = 'localhost:8000'
+    HACKATHON_DOMAIN = 'localhost:80'
 # Hackathon contact email: where should all hackers contact you. It will also be used as a sender for all emails
-HACKATHON_CONTACT_EMAIL = 'contact@hackupc.com'
+HACKATHON_CONTACT_EMAIL = 'organizer@hackwashu.io'
 # Hackathon logo url, will be used on all emails
 HACKATHON_LOGO_URL = 'https://my.hackupc.com/static/logo.png'
 
