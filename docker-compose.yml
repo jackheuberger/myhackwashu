@@ -4,7 +4,7 @@ services:
     db:
         image: postgres
         volumes:
-            - ./data/db:/var/lib/postgresql/data
+            - data:/var/lib/postgresql/data
         env_file:
             - db.env
         container_name: "postgres"
@@ -14,6 +14,8 @@ services:
         env_file:
             - db.env
             - app.env
+        volumes:
+            - .:/registration
         ports:
             - "80:80"
         links:
@@ -21,3 +23,5 @@ services:
         depends_on:
             - db
         command: python manage.py runserver 0.0.0.0:80
+volumes:
+    data:

@@ -1,13 +1,13 @@
 FROM python:3.9
 
+ENV PYTHONUNBUFFERED 1
+
+RUN mkdir /registration
+
 WORKDIR /registration
 
-COPY requirements.txt /registration/
-
-# install required packages
 COPY . /registration/
 
-RUN pip3 install --upgrade setuptools pip
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 RUN sh restart-docker.sh
