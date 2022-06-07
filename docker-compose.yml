@@ -10,7 +10,9 @@ services:
         container_name: "postgres"
     myhackwashu:
         build: .
+        platform: linux/amd64
         env_file:
+            - db.env
             - app.env
         ports:
             - "80:80"
