@@ -24,4 +24,5 @@ files/*
 
 *.log
 cache/
-*.sh
+
+*.env

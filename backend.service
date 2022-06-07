@@ -1,0 +1,12 @@
+[Unit]
+Description=backend daemon
+After=network.target
+
+[Service]
+User=user
+Group=www-data
+WorkingDirectory=/registration
+ExecStart=/registration/server.sh >>/registration/out.log 2>>/registration/error.log
+
+[Install]
+WantedBy=multi-user.target
