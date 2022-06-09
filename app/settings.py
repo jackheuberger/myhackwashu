@@ -115,7 +115,7 @@ WSGI_APPLICATION = 'app.wsgi.application'
 DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': os.environ.get('POSTGRES_DB', 'backend'),
+            'NAME': os.environ.get('POSTGRES_DB', 'postgres'),
             'USER': os.environ.get('POSTGRES_USER', 'backenduser'),
             'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
             'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
@@ -201,6 +201,7 @@ EMAIL_PORT = os.environ.get('EMAIL_PORT', None)
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', None)
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', None)
 
+
 # Load filebased email backend if no Sendgrid credentials and debug mode
 if not SENDGRID_API_KEY and not EMAIL_HOST and DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
@@ -208,6 +209,11 @@ if not SENDGRID_API_KEY and not EMAIL_HOST and DEBUG:
 else:
     if SENDGRID_API_KEY:
         EMAIL_BACKEND = "sgbackend.SendGridBackend"
+        EMAIL_HOST = 'smtp.sendgrid.net'
+        EMAIL_HOST_USER = 'apikey' # this is exactly the value 'apikey'
+        EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+        EMAIL_PORT = 587
+        EMAIL_USE_TLS = True
     else:
         EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 

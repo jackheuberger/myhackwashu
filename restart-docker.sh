@@ -2,6 +2,7 @@ echo "checking updates..."
 pip install -r requirements.txt
 echo "checking updates...done"
 echo "migrating db..."
+python manage.py migrate sessions
 python manage.py migrate
 echo "migrating db...done"
 echo "collecting static..."
@@ -18,6 +19,6 @@ if [ "$DJANGO_SUPERUSER_USERNAME" ]
 then
     python manage.py createsuperuser \
         --noinput \
-        --username $DJANGO_SUPERUSER_USERNAME \
-        --email $DJANGO_SUPERUSER_USERNAME
+        --email "organizer@hackwashu.io" \
+        --name "organizer@hackwashu.io"
 fi

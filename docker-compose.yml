@@ -22,6 +22,6 @@ services:
             - db:db
         depends_on:
             - db
-        command: python manage.py runserver 0.0.0.0:80
+        command: /bin/sh -c "/registration/restart-docker.sh && python manage.py runserver 0.0.0.0:80"
 volumes:
     data:
