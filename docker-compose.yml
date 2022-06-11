@@ -8,6 +8,8 @@ services:
         env_file:
             - db.env
         container_name: "postgres"
+        ports:
+            - "5432:5432"
     myhackwashu:
         build: .
         platform: linux/amd64

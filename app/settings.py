@@ -193,7 +193,7 @@ if os.environ.get('DROPBOX_OAUTH2_TOKEN', False):
     DROPBOX_ROOT_PATH = HACKATHON_DOMAIN.replace('.', '_')
 
 # Sendgrid API key
-SENDGRID_API_KEY = os.environ.get('SG_KEY', None)
+SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY', None)
 
 # SMTP
 EMAIL_HOST = os.environ.get('EMAIL_HOST', None)
