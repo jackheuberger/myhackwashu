@@ -5,4 +5,3 @@ run: reset-data
 reset-data:
 	docker-compose down
 	docker volume remove myhackwashu_data
-	. ./db.env; docker-compose up -d db ; sleep 3; sh restart.sh

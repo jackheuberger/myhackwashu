@@ -2,6 +2,7 @@ echo "checking updates..."
 pip install -r requirements.txt
 echo "checking updates...done"
 echo "migrating db..."
+python manage.py makemigrations
 python manage.py migrate sessions
 python manage.py migrate
 echo "migrating db...done"
@@ -15,10 +16,10 @@ echo "Deploy completed. The game is on!"
 
 echo "creating superuser..."
 
-# if [ "$DJANGO_SUPERUSER_USERNAME" ]
-# then
-#     python manage.py createsuperuser \
-#         --noinput \
-#         --email "organizer@hackwashu.io" \
-#         --name "organizer@hackwashu.io"
-# fi
+if [ "$DJANGO_SUPERUSER_USERNAME" ]
+then
+    python manage.py createsuperuser \
+        --noinput \
+        --email "organizer@hackwashu.io" \
+        --name "organizer@hackwashu.io" || true
+fi

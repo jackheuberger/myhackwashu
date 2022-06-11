@@ -9,6 +9,7 @@ from user import tokens, models
 from user.models import User
 
 REGEX_PATTERN = getattr(settings, 'REGEX_HACKATHON_ORGANIZER_EMAIL', None)
+ORGANIZER_LIST = getattr(settings, 'HACKATHON_ORGANIZER_EMAILS', None)
 DEV_EMAILS = getattr(settings, 'HACKATHON_DEV_EMAILS', None)
 
 
@@ -18,6 +19,11 @@ def user_organizer(sender, instance, created, *args, **kwargs):
     if not created:
         return None
 
+    # Make user organizer if their email is in HACKATHON_ORGANIZER_EMAILS
+    if ORGANIZER_LIST and instance.email in ORGANIZER_LIST:
+        instance.is_organizer = True
+        instance.save()
+    
     if REGEX_PATTERN and re.match(REGEX_PATTERN, instance.email):
         instance.type = models.USR_ORGANIZER
         instance.save()
