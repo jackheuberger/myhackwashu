@@ -15,10 +15,10 @@ echo "Deploy completed. The game is on!"
 
 echo "creating superuser..."
 
-if [ "$DJANGO_SUPERUSER_USERNAME" ]
-then
-    python manage.py createsuperuser \
-        --noinput \
-        --email "organizer@hackwashu.io" \
-        --name "organizer@hackwashu.io"
-fi
+# if [ "$DJANGO_SUPERUSER_USERNAME" ]
+# then
+#     python manage.py createsuperuser \
+#         --noinput \
+#         --email "organizer@hackwashu.io" \
+#         --name "organizer@hackwashu.io"
+# fi

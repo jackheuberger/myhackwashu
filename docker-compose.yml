@@ -7,12 +7,12 @@ services:
             - data:/var/lib/postgresql/data
         env_file:
             - db.env
-        container_name: "postgres"
         ports:
             - "5432:5432"
+        networks:
+            - appnet
     myhackwashu:
         build: .
-        platform: linux/amd64
         env_file:
             - db.env
             - app.env
@@ -20,10 +20,14 @@ services:
             - .:/registration
         ports:
             - "80:80"
-        links:
-            - db:db
         depends_on:
             - db
-        command: /bin/sh -c "/registration/restart-docker.sh && python manage.py runserver 0.0.0.0:80"
+        command: /bin/sh -c "sh restart-docker.sh && python manage.py runserver 0.0.0.0:80"
+        networks:
+            - appnet
 volumes:
     data:
+
+networks:
+    appnet:
+        driver: bridge

@@ -147,14 +147,14 @@ LOGGING = {
     },
     'handlers': {
         'admin_email': {
-            'level': 'ERROR',
+            'level': 'DEBUG',
             'filters': ['require_debug_false'],
             'class': 'app.log.HackathonDevEmailHandler',
         },
     },
     'loggers': {
         'django': {
-            'level': 'ERROR',
+            'level': 'DEBUG',
             'handlers': ['admin_email'],
         },
     },
@@ -208,7 +208,6 @@ if not SENDGRID_API_KEY and not EMAIL_HOST and DEBUG:
     EMAIL_FILE_PATH = 'tmp/email-messages/'
 else:
     if SENDGRID_API_KEY:
-        EMAIL_BACKEND = "sgbackend.SendGridBackend"
         EMAIL_HOST = 'smtp.sendgrid.net'
         EMAIL_HOST_USER = 'apikey' # this is exactly the value 'apikey'
         EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
