@@ -21,7 +21,7 @@ def user_organizer(sender, instance, created, *args, **kwargs):
 
     # Make user organizer if their email is in HACKATHON_ORGANIZER_EMAILS
     if ORGANIZER_LIST and instance.email in ORGANIZER_LIST:
-        instance.is_organizer = True
+        instance.type = models.USR_ORGANIZER
         instance.save()
     
     if REGEX_PATTERN and re.match(REGEX_PATTERN, instance.email):
