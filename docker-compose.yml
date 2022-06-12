@@ -14,7 +14,7 @@ services:
     myhackwashu:
         build: .
         env_file:
-            - db.env
+            - db-local.env
             - app.env
         volumes:
             - .:/registration

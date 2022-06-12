@@ -10,4 +10,6 @@ COPY . /registration/
 
 RUN pip3 install -r requirements.txt
 
-RUN sh restart-docker.sh
+EXPOSE 8000
+
+ENTRYPOINT sh restart-docker.sh && python manage.py runserver 0.0.0.0:8000
