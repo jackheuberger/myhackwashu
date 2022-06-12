@@ -12,9 +12,11 @@ You will need to install docker, docker-compose. This supports hot-reloading (th
 
 ## Required Environment Variables
 
-Two environment files are required:
+Two environment files are required. These are included in the .gitignore, and will not be pushed upstream with any changes you make.
 
-In `db.env`:
+A [sengrid](https://sendgrid.com/) account is required. Don't worry, it's totally free.
+
+In `db-local.env`:
 
 ```.env
 POSTGRES_DB=<postgres database name>
@@ -27,6 +29,11 @@ In `app.env`:
 
 ```.env
 SECRET=<secret of at least 24chars>
+SENDGRID_API_KEY=<sendgrid api key>
+DOMAIN=<set as localhost if running locally with docker compose>
+
+DJANGO_SUPERUSER_USERNAME=<your personal email account>
+DJANGO_SUPERUSER_PASSWORD=<sample password>
 ... all other environment variables as defined below.
 ```
 
