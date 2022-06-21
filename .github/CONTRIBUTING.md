@@ -4,31 +4,43 @@ Want to contribute to this repo? Great! We  :heart:  contributions. Just make su
 Read both the [general guidelines](#general-guidelines) and the [coding style guidelines](#coding-style-guidelines).
 By making a contribution, in any form (including, but not limited to, Issues and Pull Requests), you agree to abide by the [Code of Conduct](CODE_OF_CONDUCT.md).
 
-## How to contribute
+## Where should I contribute?
 
-This platform is being used by several hackathons at the same time. To avoid conflicts between personalizations avoid editing constomizable fields like the stylesheet, hackathon_variables, form ordering or similar. Any Pull Request that could affect other hackathons will be deeply reviewed and could be rejected to avoid conflicts.
+In this repository, silly! In all seriousness, we did not create this projects, the fine folks at UPC in Barcelona did. This fork is being tailored for WashU's upcoming 2022 Hackathon, and is a fork of a fork of UPC's HackAssistant. If we need to add a big feature, consider adding it to the upstream branch.
+
+> NOTE: Reach out to them post-hackathon about updating the original project
+
+### Why are we two layers deep?
+
+From what we can tell, Hack UPC made the original project though the repo hasn't been touched for years. That's the version that's linked on MLH's website, but it seems deprecated. We found that there was a modern version available on GitHub that Hack UPC used back in December 2021 to host a hackathon. Since UPC's specific verison is more recently updated, we decided to fork theirs instead of merging 3 years worth of changes between their updated version and the deprecated repository. Thanks guys :heart:
 
 ## General Guidelines
 
 ### New Feature or a Bug Fix?
-1. Fork the repo (you can ignore this step if you are a part of the maintainer team)
+
+0. Create a GitHub issue for what you're doing so we can track what's currently being worked on
+1. Fork the repo (can be skipped if you're in the Hack WashU GitHub org)
 2. Create a new branch with a descriptive name of the feature or the bug you are fixing.
-3. If you are a part of the maintainer team, push the branch to the remote so that others know that you are working on this branch. Otherwise, create a new issue mentioning that you would like to add a new feature or fix a bug you noticed. This lets us know that someone is already helping us fix the issue!
+3. Push your new branch to your remote and mention in the issue that you've started work on the feature/fix and link to your branch.
 4. Make changes and commit them. Your commit messages should be descriptive and imperative. Read [this](http://who-t.blogspot.com/2009/12/on-commit-messages.html) for guidelines.
 5. Create a pull request with a descriptive title. Clearly document any changes you made. You should be able to explain why you made those changes.
-6. Check Travis CI to see if there's any formatting errors and fix them
 
-### Working on the Next Release?
+<!-- ### Working on the Next Release?
+
 1. Work on the `dev` or `develop` branch
-2. Create a pull request with a descriptive title. Clearly document any changes you made. You should be able to explain why you made those changes.
+2. Create a pull request with a descriptive title. Clearly document any changes you made. You should be able to explain why you made those changes. -->
 
 ## Coding Style Guidelines
+
+> NOTE: We're not enforcing this right now -- we need to get an MVP out ASAP. This is something to come back to between registration opening and the hackathon starting.
 
 This project applies the same coding style than [Django Project](https://docs.djangoproject.com/en/1.11/internals/contributing/writing-code/coding-style/) which follows almost all [PEP-8](https://www.python.org/dev/peps/pep-0008/) coding guidelines.
 
 We allow up to 119 characters/line as this is the width of GitHub code review; anything longer requires horizontal scrolling which makes review more difficult. This check is included when you run flake8. Documentation, comments, and docstrings should be wrapped at 79 characters, even though PEP 8 suggests 72.
 
 All of this is enforced with Travis CI. All PRs will need to success on Travis before being merged.
+
+<!-- TODO: Consider Travis CI? -->
 
 ## Commit Message Guidelines
 
