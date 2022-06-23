@@ -1,14 +1,45 @@
 # Deployment
 
-## Development
+Don't worry, this doc isn't as long as it looks -- most of it is legacy documentation that hasn't been cleaned up.
 
-There are two options for running this app: either locally or on a container.
+## Overview
 
-### Container
+There are two parts to this app: the Django server and the database. The below documentation will run through two scenarios: running both apps as containers, or running only the database as a container with the app local. There are Makefile targets to support either workflow.
 
-This one is easy: `docker-compose up (-d) (--build)`
+> NOTE: If you've never touched Docker before, the latter is most likely the better option.
 
-You will need to install docker, docker-compose. This supports hot-reloading (though it may crash and not restart on an error). Before running, make sure required environment variables are set.
+## Development requirements
+
+### All platforms
+
+These are the base requirements for running the application
+
+1. Python 3.9
+
+2. Docker & docker-compose (Windows users see below)
+
+### Notes for Windows Users
+
+Having docker-compose makes things *significantly* easier, though this requires Windows 10/11 Pro, as the base version does not support virtualization and containers. You can get a free Windows for Education (same features as Pro) license from WashU (TODO: ADD LINK). If you've already used your key but still want to upgrade, ask in Discord and we can get you a key for $40.
+
+If you don't want to upgrade, you have two options:
+
+1. Install Postgres locally -- This is more work than it's worth, would not reccomend.
+2. Create an Azure for Students subscription -- Using your WashU email you can get $100/mo in credit from Microsoft to play around with Azure. This is the solution we actually use for deploying the application. You can learn more about this option here (TODO: Add MSDocs links)
+
+Similarly, WSL is *HIGHLY* recommended. You can learn more about it here (TODO: add link)
+
+## Double Container
+
+Run `make compose` (same as `docker-compose up --build`)
+
+This method *should* support hot-reloading (though it may crash and not restart on an error). Before running, make sure required environment variables are set.
+
+## Databse Container, Local Application
+
+Depending on your IDE (ie Pycharm), this might be the better option for you.
+
+Run `make local`. This creates the python virtual environment, installs required packages, and creates database migrations
 
 ## Required Environment Variables
 
@@ -19,18 +50,19 @@ A [sengrid](https://sendgrid.com/) account is required. Don't worry, it's totall
 In `db-local.env`:
 
 ```.env
-POSTGRES_DB=<postgres database name>
+POSTGRES_DB=postgres
 POSTGRES_USER=<username>
 POSTGRES_PASSWORD=<admin password>
-POSTGRES_HOST=db
+POSTGRES_HOST=localhost # Note: this is manually overwritten in docker-compose.yml
 ```
 
 In `app.env`:
 
 ```.env
-SECRET=<secret of at least 24chars>
+SECRET=<random secret string>
 SENDGRID_API_KEY=<sendgrid api key>
 DOMAIN=<set as localhost if running locally with docker compose>
+PROD_MODE=FALSE
 
 DJANGO_SUPERUSER_USERNAME=<your personal email account>
 DJANGO_SUPERUSER_PASSWORD=<sample password>
@@ -73,20 +105,25 @@ You can replace the email backend easily. See more [here](https://djangopackages
 - **CAS_SERVER**(optional): Enables login for other platforms
 
 -----
+
 # Legacy Documentation
 
-We didn't write this app, so in case something breaks these docs are being kept around in case they're needed
+We didn't write this app, so in case something breaks these docs are being kept around in case they're needed.
+
+We've changed most of this (ie moved away from NGINX) and are deploying using docker containers instead of on bare-metal.
 
 ### Local environment
 
 - Set up (see above)
 - `python manage.py runserver`
 - Set cron for cas service:
+
 ```
 0   0  * * * cd /home/user/project_folder/ && manage.py clearsessions
 */5 *  * * * cd /home/user/project_folder/ && manage.py cas_clean_tickets
 5   0  * * * cd /home/user/project_folder/ && manage.py cas_clean_sessions
 ```
+
 - Sit back, relax and enjoy. That's it!
 
 ### Local Production Environment
@@ -106,10 +143,12 @@ Inspired on this [tutorial](https://www.digitalocean.com/community/tutorials/how
 - Set up Systemd (read next section)
 
 #### Set up gunicorn service in Systemd
+
 Needs: Systemd.
 
 - Edit this file `/etc/systemd/system/backend.service`
 - Add this content
+
 ```
 [Unit]
 Description=backend daemon
@@ -129,7 +168,6 @@ WantedBy=multi-user.target
 - Replace `user` for your linux user.
 - Replace `project_folder` by the name of the folder where the project is located
 - Create and enable service: `sudo systemctl start backend && sudo systemctl enable backend`
-
 
 #### Set up Postgres
 
@@ -220,8 +258,6 @@ server {
 - `./restart.sh`
 - `sudo service backend restart`
 
-
-
 ## Management
 
 ### Automated expiration
@@ -230,6 +266,7 @@ server {
 - `chmod +x management.sh`
 - Edit variables to match your environment and add extra if required (see environment variables available above)
 - Add to crontab: `crontab -e`
+
 ```
 */5 * * * * cd /home/user/project_folder/ && ./management.sh > /home/user/project_folder/management.log 2> /home/user/project_folder/management_err.log
 ```
@@ -282,26 +319,29 @@ You can use this for your own hackathon. How?
 - Email base template: [app/templates/base_email.html](app/templates/base_email.html)
 - Update favicon [app/static/](app/static/)
 
-
 ### Content
 
-#### Update emails:
+#### Update emails
 
 You can update emails related to
+
 - Applications (application invite, event ticket, last reminder) at [applications/templates/mails/](applications/templates/mails/)
 - Reimbursements (reimbursement email, reject receipt) at [reimbursement/templates/mails/](reimbursement/templates/mails/)
 - User registration (email verification, password reset) at [user/templates/mails/](user/templates/mails/)
 
 #### Update hackathon variables
+
 Check all available variables at [app/hackathon_variables.py.template](app/hackathon_variables.py.template).
 You can set the ones that you prefer at [app/hackathon_variables.py](app/hackathon_variables.py)
 
 #### Update registration form
+
 You can change the form, titles, texts in [applications/forms.py](applications/forms.py)
 
 #### Update application model
+
 If you need extra labels for your hackathon, you can change the model and add your own fields.
 
-   - Update model with specific fields: [applications/models.py](applications/models.py)
-   - `python manage.py makemigrations`
-   - `python manage.py migrate`
+- Update model with specific fields: [applications/models.py](applications/models.py)
+- `python manage.py makemigrations`
+- `python manage.py migrate`

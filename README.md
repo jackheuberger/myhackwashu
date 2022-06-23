@@ -1,3 +1,7 @@
+# MyHackWashU
+
+*Hack WashU's Application Management System* -- Forked from [hackupc/myhackupc](https://github.com/hackupc/myhackupc) and originally based on UPC's [HackAssistant](https://github.com/HackAssistant/registration)
+
 📝 Registration for HackWashU - Washington University in St. Louis' hackathon. Forked from [hackupc/myhackupc](https://github.com/hackupc/myhackupc) which was forked from [HackAssistant/registration](https://github.com/HackAssistant/registration). Previously known as hackupc/backend. [Medium article](https://medium.com/hackcu/hackassistant-95d0f15c9199). [User Guide](USER_GUIDE.md)
 
 ## Features
@@ -21,9 +25,10 @@
 
 ## Deployment
 
-See [Deployment.md](Deployment.md)
+See [Development.md](Development.md) for local & production environment setup
 
 # Want to Contribute?
+
 Read these [guidelines](.github/CONTRIBUTING.md) carefully.
 
 By making a contribution, in any form (including, but not limited to, Issues and Pull Requests), you agree to abide by the [Code of Conduct](.github/CODE_OF_CONDUCT.md). Report any incidents to devs@hackupc.com and appropriate action will be taken against the offender after investigation.

@@ -15,6 +15,11 @@ import os
 import dj_database_url
 
 from .hackathon_variables import *
+from dotenv import load_dotenv
+
+load_dotenv("app.env")
+load_dotenv("db-local.env", verbose=True)
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
