@@ -61,7 +61,7 @@ In `app.env`:
 ```.env
 SECRET=<random secret string>
 SENDGRID_API_KEY=<sendgrid api key>
-DOMAIN=<set as localhost if running locally with docker compose>
+DOMAIN=localhost:8000 
 PROD_MODE=FALSE
 
 DJANGO_SUPERUSER_USERNAME=<your personal email account>

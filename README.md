@@ -25,7 +25,7 @@
 
 ## Deployment
 
-See [Development.md](Development.md) for local & production environment setup
+See [Development.md](docs/Development.md) for local & production environment setup
 
 # Want to Contribute?
 
