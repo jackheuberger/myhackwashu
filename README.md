@@ -1,5 +1,7 @@
 # MyHackWashU
 
+HELLO WORLD!
+
 *Hack WashU's Application Management System* -- Forked from [hackupc/myhackupc](https://github.com/hackupc/myhackupc) and originally based on UPC's [HackAssistant](https://github.com/HackAssistant/registration)
 
 📝 Registration for HackWashU - Washington University in St. Louis' hackathon. Forked from [hackupc/myhackupc](https://github.com/hackupc/myhackupc) which was forked from [HackAssistant/registration](https://github.com/HackAssistant/registration). Previously known as hackupc/backend. [Medium article](https://medium.com/hackcu/hackassistant-95d0f15c9199). [User Guide](USER_GUIDE.md)
