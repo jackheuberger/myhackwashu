@@ -7,7 +7,7 @@ local: create-env reset-data db-container
 	bash restart.sh
 	. ./app.env; . ./db-local.env; ./env/bin/python manage.py runserver 0.0.0.0:8000
 
-compose:
+compose: reset-data
 	docker-compose up --build
 
 create-env:
