@@ -18,6 +18,6 @@ reset-data:
 	docker volume remove myhackwashu_data || true
 
 db-container:
-	docker-compose up -d db 
+	docker-compose up -d db
 	
 .PHONY: db-container reset-data create-env compose local list
