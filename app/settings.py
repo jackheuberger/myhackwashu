@@ -18,7 +18,7 @@ from .hackathon_variables import *
 from dotenv import load_dotenv
 
 load_dotenv("app.env")
-load_dotenv("db-local.env", verbose=True)
+load_dotenv("db-local.env")
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
