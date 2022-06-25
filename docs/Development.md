@@ -14,7 +14,7 @@ There are two parts to this app: the Django server and the database. The below d
 
 These are the base requirements for running the application
 
-1. Python 3.9
+1. Python 3.9 or 3.10
 
 2. Docker & docker-compose (Windows users see below)
 
@@ -41,6 +41,10 @@ Depending on your IDE (ie Pycharm), this might be the better option for you.
 
 Run `make local`. This creates the python virtual environment, installs required packages, and creates database migrations
 
+> NOTE: If you get an error about psycopg2-binary, try installing the `python-dev-is-python3` and `libpq-dev` packages
+> 
+> If you get an error about Pillow, install these packages: `zlib1g-dev libjpeg-dev libpng-dev`
+
 ## Required Environment Variables
 
 Two environment files are required. These are included in the .gitignore, and will not be pushed upstream with any changes you make.
@@ -61,7 +65,7 @@ In `app.env`:
 ```.env
 SECRET=<random secret string>
 SENDGRID_API_KEY=<sendgrid api key>
-DOMAIN=<set as localhost if running locally with docker compose>
+DOMAIN=localhost:8000 
 PROD_MODE=FALSE
 
 DJANGO_SUPERUSER_USERNAME=<your personal email account>
