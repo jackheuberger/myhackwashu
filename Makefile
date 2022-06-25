@@ -16,6 +16,7 @@ create-env:
 reset-data:
 	docker-compose down || true
 	docker volume remove myhackwashu_data || true
+	docker-compose down --volumes || true
 
 db-container:
 	docker-compose up -d db
