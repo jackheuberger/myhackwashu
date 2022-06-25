@@ -65,6 +65,7 @@ In `app.env`:
 ```.env
 SECRET=<random secret string>
 SENDGRID_API_KEY=<sendgrid api key>
+DEV_EMAIL=<sendgrid acount single sender email>
 DOMAIN=localhost:8000 
 PROD_MODE=FALSE
 
