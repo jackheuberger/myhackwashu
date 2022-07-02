@@ -7,13 +7,13 @@ load_dotenv("app.env")
 
 from django.utils import timezone
 
-HACKATHON_NAME = 'HackWashU'
+HACKATHON_NAME = 'Hack WashU'
 # What's the name for the application
 HACKATHON_APPLICATION_NAME = 'My HackWashU'
 # Hackathon timezone
 TIME_ZONE = 'America/Chicago'
 # This description will be used on the html and sharing meta tags
-HACKATHON_DESCRIPTION = 'HackWashU is taking place from Octover 14th to 16th.'
+HACKATHON_DESCRIPTION = 'Hack WashU is taking place from Octover 14th to 16th.'
 # Domain where application is deployed, can be set by env variable
 HACKATHON_DOMAIN = os.environ.get('DOMAIN', None)
 HEROKU_APP_NAME = os.environ.get('HEROKU_APP_NAME', None)
