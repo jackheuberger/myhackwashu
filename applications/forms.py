@@ -237,8 +237,8 @@ class HackerApplicationForm(_BaseApplicationForm, _HackerMentorApplicationForm, 
     )
 
     cvs_edition = forms.BooleanField(
-        required=False,
-        label='I authorize "Hackers at UPC" to share my CV with HackUPC 2021 Sponsors.'
+        required=True,
+        label='I authorize Hack WashU to share my CV with event sponsors.<span style="color: red; font-weight: bold;"> *</span>'
     )
 
     def __init__(self, data=None, files=None, auto_id='id_%s', prefix=None, initial=None, error_class=ErrorList,
