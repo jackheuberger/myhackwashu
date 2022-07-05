@@ -64,11 +64,11 @@ HACKATHON_ORGANIZER_EMAILS = ['jackheuberger@wustl.edu']
 HACKATHON_DEV_EMAILS = ['organizer@hackwashu.io', ]
 
 # Baggage configuration
-BAGGAGE_ENABLED = False
-BAGGAGE_PICTURE = False
+BAGGAGE_ENABLED = True
+BAGGAGE_PICTURE = True
 
 # Reimbursement configuration
-REIMBURSEMENT_ENABLED = False
+REIMBURSEMENT_ENABLED = True
 DEFAULT_REIMBURSEMENT_AMOUNT = 100
 CURRENCY = '€'
 REIMBURSEMENT_EXPIRY_DAYS = 5
