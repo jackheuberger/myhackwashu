@@ -58,7 +58,7 @@ HACKATHON_LIVE_PAGE = 'https://live.hackupc.com'
 # (OPTIONAL) Regex to automatically match organizers emails and set them as organizers when signing up
 REGEX_HACKATHON_ORGANIZER_EMAIL = '^.*@hackupc\.com$'
 
-HACKATHON_ORGANIZER_EMAILS = ['jackheuberger@wustl.edu']
+HACKATHON_ORGANIZER_EMAILS = ['jackheuberger@wustl.edu', 'e.sheehan@wustl.edu', 'b.hsu@wustl.edu', 'skim27@wustl.edu']
 
 # (OPTIONAL) Send 500 errors to email while on production mode
 HACKATHON_DEV_EMAILS = ['organizer@hackwashu.io', ]
