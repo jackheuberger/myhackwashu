@@ -24,11 +24,11 @@ elif not HACKATHON_DOMAIN:
 # Hackathon contact email: where should all hackers contact you. It will also be used as a sender for all emails
 HACKATHON_CONTACT_EMAIL = os.environ.get('DEV_EMAIL', 'organizer@hackwashu.io')
 # Hackathon logo url, will be used on all emails
-HACKATHON_LOGO_URL = 'https://my.hackupc.com/static/logo.png'
+HACKATHON_LOGO_URL = 'https://www.hackwashu.io/img/hackwashu-ab.32b7d0b4.svg'
 
 HACKATHON_OG_IMAGE = 'https://hackupc.com/ogimage.png?v=2021'
 # (OPTIONAL) Track visits on your website
-HACKATHON_GOOGLE_ANALYTICS = 'UA-69542332-2'
+HACKATHON_GOOGLE_ANALYTICS = 'G-FSJQ7KKMGF'
 # (OPTIONAL) Hackathon Twitter user
 HACKATHON_TWITTER_ACCOUNT = 'hackupc'
 # (OPTIONAL) Hackathon Facebook page
@@ -58,10 +58,10 @@ HACKATHON_LIVE_PAGE = 'https://live.hackupc.com'
 # (OPTIONAL) Regex to automatically match organizers emails and set them as organizers when signing up
 REGEX_HACKATHON_ORGANIZER_EMAIL = '^.*@hackupc\.com$'
 
-HACKATHON_ORGANIZER_EMAILS = ['jackheuberger@wustl.edu']
+HACKATHON_ORGANIZER_EMAILS = ['jackheuberger@wustl.edu', 'e.sheehan@wustl.edu', 'b.hsu@wustl.edu', 'skim27@wustl.edu']
 
 # (OPTIONAL) Send 500 errors to email while on production mode
-HACKATHON_DEV_EMAILS = ['devs@hackupc.com', ]
+HACKATHON_DEV_EMAILS = ['organizer@hackwashu.io', ]
 
 # Baggage configuration
 BAGGAGE_ENABLED = True
