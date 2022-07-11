@@ -296,9 +296,8 @@ class HackerApplicationForm(_BaseApplicationForm, _HackerMentorApplicationForm, 
         discord = getattr(settings, 'DISCORD_HACKATHON', False)
         hardware = getattr(settings, 'HARDWARE_ENABLED', False)
         hybrid = getattr(settings, 'HYBRID_HACKATHON', False)
-        email = self.fields['user'].get_short_name()
         personal_info_fields = fields['Personal Info']['fields']
-        if 'wustl.edu' in email:
+        if self.fields['user'].is_wustl:
             personal_info_fields.append({'name': 'wustl_student', 'space': 12})
         else:
             personal_info_fields.append({'name': 'online', 'space': 12})
