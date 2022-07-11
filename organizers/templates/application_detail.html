@@ -22,10 +22,11 @@
                 <h3>Personal</h3>
                 </dt>
                 <dd></dd>
+                {% include 'include/field.html' with desc='WUSTL student?' value=app.user.is_wustl %}
+                {% include 'include/field.html' with desc='Submitted' value=app.submission_date|naturaltime %}
                 {% include 'include/field.html' with desc='Votes' value=app.vote_set.count %}
                 {% include 'include/field.html' with desc='Lenny face' value=app.lennyface %}
                 {% include 'include/field.html' with desc='Name' value=app.user.name %}
-                {% include 'include/field.html' with desc='Submitted' value=app.submission_date|naturaltime %}
                 {% include 'include/field.html' with desc='Country' value=app.origin_country %}
                 {% include 'include/field.html' with desc='Online?' value=app.online|yesno:'Yes,No,Maybe' %}
                 {% if not vote %}
