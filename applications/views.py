@@ -133,11 +133,6 @@ class HackerDashboard(DashboardMixin, TabsView):
     def get_current_tabs(self):
         return hacker_tabs(self.request.user)
 
-    def get_form_kwargs(self):
-        kwargs = super(HackerApplication, self).get_form_kwargs()
-        kwargs.update({'user': self.request.user})
-        return kwargs
-
     def get_context_data(self, **kwargs):
         context = super(HackerDashboard, self).get_context_data(**kwargs)
         Application = VIEW_APPLICATION_TYPE.get(self.request.user.type, models.HackerApplication)
@@ -190,8 +185,6 @@ class HackerDashboard(DashboardMixin, TabsView):
         else:
             c = self.get_context_data()
             c.update({'form': form})
-            k = self.get_form_kwargs()
-            c.update(k)
             return render(request, self.template_name, c)
 
 

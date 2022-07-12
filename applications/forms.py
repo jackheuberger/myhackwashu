@@ -255,7 +255,6 @@ class HackerApplicationForm(_BaseApplicationForm, _HackerMentorApplicationForm, 
         super(HackerApplicationForm, self).__init__(data, files, auto_id, prefix, initial, error_class, label_suffix, empty_permitted, instance,
                          use_required_attribute, *args, **kwargs)
         self.fields['resume'].required = True
-        self.fields['user'] = self.user
 
     def clean_cvs_edition(self):
         cc = self.cleaned_data.get('cvs_edition', False)
@@ -297,7 +296,7 @@ class HackerApplicationForm(_BaseApplicationForm, _HackerMentorApplicationForm, 
         hardware = getattr(settings, 'HARDWARE_ENABLED', False)
         hybrid = getattr(settings, 'HYBRID_HACKATHON', False)
         personal_info_fields = fields['Personal Info']['fields']
-        if self.fields['user'].is_wustl:
+        if self.user.is_wustl:
             personal_info_fields.append({'name': 'wustl_student', 'space': 12})
         else:
             personal_info_fields.append({'name': 'online', 'space': 12})
