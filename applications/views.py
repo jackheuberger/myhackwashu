@@ -133,11 +133,6 @@ class HackerDashboard(DashboardMixin, TabsView):
     def get_current_tabs(self):
         return hacker_tabs(self.request.user)
 
-    def get_form_kwargs(self):
-        kwargs = super(HackerApplication, self).get_form_kwargs()
-        kwargs.update({'user': self.request.user})
-        return kwargs
-
     def get_context_data(self, **kwargs):
         context = super(HackerDashboard, self).get_context_data(**kwargs)
         Application = VIEW_APPLICATION_TYPE.get(self.request.user.type, models.HackerApplication)
@@ -148,7 +143,7 @@ class HackerDashboard(DashboardMixin, TabsView):
             app = Application({'dict': dict})
             form = ApplicationForm(instance=app)
         except Exception:
-            form = ApplicationForm(user = self.request.user)
+            form = ApplicationForm()
         context.update({'form': form, 'is_hacker': self.request.user.is_hacker()})
         try:
             application = Application.objects.get(user=self.request.user)
@@ -165,10 +160,10 @@ class HackerDashboard(DashboardMixin, TabsView):
 
         new_application = True
         try:
-            form = ApplicationForm(request.POST, request.FILES, instance=request.user.application, user = request.user)
+            form = ApplicationForm(request.POST, request.FILES, instance=request.user.application)
             new_application = False
         except Exception:
-            form = ApplicationForm(request.POST, request.FILES, user = request.user)
+            form = ApplicationForm(request.POST, request.FILES)
         if form.is_valid():
             email_subscribe = form.cleaned_data.get('email_subscribe', False)
             application = form.save(commit=False)
@@ -190,8 +185,6 @@ class HackerDashboard(DashboardMixin, TabsView):
         else:
             c = self.get_context_data()
             c.update({'form': form})
-            k = self.get_form_kwargs()
-            c.update(k)
             return render(request, self.template_name, c)
 
 
@@ -201,11 +194,6 @@ class HackerApplication(IsHackerMixin, TabsView):
     def get_current_tabs(self):
         return hacker_tabs(self.request.user)
 
-    def get_form_kwargs(self):
-        kwargs = super(HackerApplication, self).get_form_kwargs()
-        kwargs.update({'user': self.request.user})
-        return kwargs
-
     def get_context_data(self, **kwargs):
         context = super(HackerApplication, self).get_context_data(**kwargs)
 
@@ -214,7 +202,7 @@ class HackerApplication(IsHackerMixin, TabsView):
 
         application = get_object_or_404(Application, user=self.request.user)
         deadline = get_deadline(application)
-        form = ApplicationForm(instance=application, user = self.request.user)
+        form = ApplicationForm(instance=application)
         if not application.can_be_edit():
             form.set_read_only()
         context.update(
@@ -225,9 +213,9 @@ class HackerApplication(IsHackerMixin, TabsView):
         ApplicationForm = VIEW_APPLICATION_FORM_TYPE.get(self.request.user.type, forms.HackerApplicationForm)
         try:
             form = ApplicationForm(request.POST, request.FILES,
-                                   instance=request.user.application, user = request.user)
+                                   instance=request.user.application)
         except Exception:
-            form = ApplicationForm(request.POST, request.FILES, user = request.user)
+            form = ApplicationForm(request.POST, request.FILES)
         if form.is_valid():
             application = form.save(commit=False)
             application.user = request.user
@@ -238,9 +226,7 @@ class HackerApplication(IsHackerMixin, TabsView):
             return HttpResponseRedirect(reverse('application'))
         else:
             c = self.get_context_data()
-            k = self.get_form_kwargs()
             c.update({'form': form})
-            c.update(k)
             return render(request, self.template_name, c)
 
 
