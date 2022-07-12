@@ -164,19 +164,14 @@ class _HackerMentorApplicationForm(OverwriteOnlyModelFormMixin, ModelForm):
     site = forms.CharField(required=False, widget=forms.TextInput(
         attrs={'class': 'form-control', 'placeholder': 'https://biene.space'}))
 
-    wustl_student = forms.TypedChoiceField(
-                required=True,
-                label='How would you like to attend the event: live or online?',
-                initial=False,
-                coerce=lambda x: x == 'True',
-                choices=((False, 'Live'), (True, 'Online')),
-                widget=forms.RadioSelect
-            )
-
-    online = forms.BooleanField(
-                required=True,
-                label='I understand that non-WashU students will only be able to attend this event online. <span style="color: red; font-weight: bold;"> *</span>',
-            ) 
+    online = forms.TypedChoiceField(
+        required=True,
+        label='How would you like to attend the event: live or online?',
+        initial=True,
+        coerce=lambda x: x == 'True',
+        choices=((False, 'Live'), (True, 'Online')),
+        widget=forms.RadioSelect
+    )
 
     def clean_resume(self):
         resume = self.cleaned_data['resume']
@@ -208,9 +203,6 @@ class _HackerMentorApplicationForm(OverwriteOnlyModelFormMixin, ModelForm):
             raise forms.ValidationError("Please fill this in order for us to know you a bit better.")
         return data
 
-    def clean_online(self):
-        online = self.cleaned_data.get('online', False)
-        return online
 
 class HackerApplicationForm(_BaseApplicationForm, _HackerMentorApplicationForm, _HackerMentorVolunteerApplicationForm):
     bootstrap_field_info = {
@@ -250,12 +242,10 @@ class HackerApplicationForm(_BaseApplicationForm, _HackerMentorApplicationForm, 
     )
 
     def __init__(self, data=None, files=None, auto_id='id_%s', prefix=None, initial=None, error_class=ErrorList,
-                 label_suffix=None, empty_permitted=False, instance=None, use_required_attribute=None, *args, **kwargs):
-        self.user = kwargs.pop('user')
-        super(HackerApplicationForm, self).__init__(data, files, auto_id, prefix, initial, error_class, label_suffix, empty_permitted, instance,
-                         use_required_attribute, *args, **kwargs)
+                 label_suffix=None, empty_permitted=False, instance=None, use_required_attribute=None):
+        super().__init__(data, files, auto_id, prefix, initial, error_class, label_suffix, empty_permitted, instance,
+                         use_required_attribute)
         self.fields['resume'].required = True
-        self.fields['user'] = self.user
 
     def clean_cvs_edition(self):
         cc = self.cleaned_data.get('cvs_edition', False)
@@ -296,11 +286,8 @@ class HackerApplicationForm(_BaseApplicationForm, _HackerMentorApplicationForm, 
         discord = getattr(settings, 'DISCORD_HACKATHON', False)
         hardware = getattr(settings, 'HARDWARE_ENABLED', False)
         hybrid = getattr(settings, 'HYBRID_HACKATHON', False)
-        email = self.fields['user'].get_short_name()
         personal_info_fields = fields['Personal Info']['fields']
-        if 'wustl.edu' in email:
-            personal_info_fields.append({'name': 'wustl_student', 'space': 12})
-        else:
+        if hybrid:
             personal_info_fields.append({'name': 'online', 'space': 12})
         polices_fields = [{'name': 'terms_and_conditions', 'space': 12}, {'name': 'cvs_edition', 'space': 12},
                           {'name': 'email_subscribe', 'space': 12}]
