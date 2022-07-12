@@ -24,7 +24,7 @@ elif not HACKATHON_DOMAIN:
 # Hackathon contact email: where should all hackers contact you. It will also be used as a sender for all emails
 HACKATHON_CONTACT_EMAIL = os.environ.get('DEV_EMAIL', 'organizer@hackwashu.io')
 # Hackathon logo url, will be used on all emails
-HACKATHON_LOGO_URL = 'https://www.hackwashu.io/img/hackwashu-ab.32b7d0b4.svg'
+HACKATHON_LOGO_URL = 'https://my.hackupc.com/static/logo.png'
 
 HACKATHON_OG_IMAGE = 'https://hackupc.com/ogimage.png?v=2021'
 # (OPTIONAL) Track visits on your website
