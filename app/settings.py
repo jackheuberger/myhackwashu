@@ -124,6 +124,7 @@ DATABASES = {
             'USER': os.environ.get('POSTGRES_USER', 'backenduser'),
             'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
             'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
+            'OPTIONS': {'sslmode': 'require'},
             'PORT': '5432',
         }
     }
