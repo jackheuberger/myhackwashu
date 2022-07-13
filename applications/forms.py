@@ -194,6 +194,7 @@ class _HackerMentorApplicationForm(OverwriteOnlyModelFormMixin, ModelForm):
             raise forms.ValidationError("Please fill this in order for us to know you a bit better.")
         return data
 
+
 class HackerApplicationForm(_BaseApplicationForm, _HackerMentorApplicationForm, _HackerMentorVolunteerApplicationForm):
     bootstrap_field_info = {
         'Personal Info': {
