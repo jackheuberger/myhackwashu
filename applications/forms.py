@@ -234,7 +234,7 @@ class HackerApplicationForm(_BaseApplicationForm, _HackerMentorApplicationForm, 
 
     online = forms.BooleanField(
                 required=True,
-                label='This event is in-person for WashU students and online otherwise. <span style="color: red; font-weight: bold;"> *</span>',
+                label='By checking this box, I acknowledge that this event is in-person for WashU students only and online otherwise. <span style="color: red; font-weight: bold;"> *</span>',
     ) 
 
     def __init__(self, data=None, files=None, auto_id='id_%s', prefix=None, initial=None, error_class=ErrorList,
