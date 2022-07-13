@@ -164,15 +164,6 @@ class _HackerMentorApplicationForm(OverwriteOnlyModelFormMixin, ModelForm):
     site = forms.CharField(required=False, widget=forms.TextInput(
         attrs={'class': 'form-control', 'placeholder': 'https://biene.space'}))
 
-    online = forms.TypedChoiceField(
-        required=True,
-        label='How would you like to attend the event: live or online?',
-        initial=True,
-        coerce=lambda x: x == 'True',
-        choices=((False, 'Live'), (True, 'Online')),
-        widget=forms.RadioSelect
-    )
-
     def clean_resume(self):
         resume = self.cleaned_data['resume']
         size = getattr(resume, '_size', 0)
@@ -241,6 +232,11 @@ class HackerApplicationForm(_BaseApplicationForm, _HackerMentorApplicationForm, 
         label='I authorize Hack WashU to share my Resume with event sponsors. <span style="color: red; font-weight: bold;"> *</span>'
     )
 
+    online = forms.BooleanField(
+                required=True,
+                label='This event is in-person for WashU students and online otherwise. <span style="color: red; font-weight: bold;"> *</span>',
+    ) 
+
     def __init__(self, data=None, files=None, auto_id='id_%s', prefix=None, initial=None, error_class=ErrorList,
                  label_suffix=None, empty_permitted=False, instance=None, use_required_attribute=None):
         super().__init__(data, files, auto_id, prefix, initial, error_class, label_suffix, empty_permitted, instance,
@@ -280,6 +276,10 @@ class HackerApplicationForm(_BaseApplicationForm, _HackerMentorApplicationForm, 
             raise forms.ValidationError("Reimbursement applications are now closed. Trying to hack us?")
         return reimb
 
+    def clean_online(self):
+        online = self.cleaned_data.get('online', False)
+        return online
+
     def get_bootstrap_field_info(self):
         fields = super().get_bootstrap_field_info()
         # Fieldsets ordered and with description
@@ -287,8 +287,7 @@ class HackerApplicationForm(_BaseApplicationForm, _HackerMentorApplicationForm, 
         hardware = getattr(settings, 'HARDWARE_ENABLED', False)
         hybrid = getattr(settings, 'HYBRID_HACKATHON', False)
         personal_info_fields = fields['Personal Info']['fields']
-        if hybrid:
-            personal_info_fields.append({'name': 'online', 'space': 12})
+        personal_info_fields.append({'name': 'online', 'space': 12})
         polices_fields = [{'name': 'terms_and_conditions', 'space': 12}, {'name': 'cvs_edition', 'space': 12},
                           {'name': 'email_subscribe', 'space': 12}]
         if not discord:
