@@ -238,10 +238,9 @@ class HackerApplicationForm(_BaseApplicationForm, _HackerMentorApplicationForm, 
     ) 
 
     def __init__(self, data=None, files=None, auto_id='id_%s', prefix=None, initial=None, error_class=ErrorList,
-                 label_suffix=None, empty_permitted=False, instance=None, use_required_attribute=None, *args, **kwargs):
-        self.user = kwargs.pop('user')
-        super(HackerApplicationForm, self).__init__(data, files, auto_id, prefix, initial, error_class, label_suffix, empty_permitted, instance,
-                         use_required_attribute, *args, **kwargs)
+                 label_suffix=None, empty_permitted=False, instance=None, use_required_attribute=None):
+        super().__init__(data, files, auto_id, prefix, initial, error_class, label_suffix, empty_permitted, instance,
+                         use_required_attribute)
         self.fields['resume'].required = True
 
     def clean_cvs_edition(self):

@@ -347,8 +347,7 @@ class _HackerMentorApplication(models.Model):
     site = models.URLField(blank=True, null=True)
 
     # Hacker will assist face-to-face or online
-    wustl_student = models.BooleanField(default=False)
-    online = models.BooleanField(default=True)
+    online = models.BooleanField(default=False)
 
 
 class _VolunteerMentorApplication(models.Model):

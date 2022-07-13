@@ -9,8 +9,10 @@
 
     <p>
         You should have received an email at {{ user.email }}. Check your spam folder. If you haven't received an email,
-        you can ask to send it again <a href="{% url 'send_email_verification' %}">here</a>.
+        click (<a href="{% url 'send_email_verification' %}">here</a>) to send it again.
     </p>
+
+    <strong>Emails can take up to 5 minutes to send, and may end up in spam</strong>
 
 
 {% endblock %}

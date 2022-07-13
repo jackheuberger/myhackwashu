@@ -42,8 +42,7 @@ class UserManager(BaseUserManager):
         user = self.model(
             email=email,
             name=name,
-            type=USR_URL_TYPE[u_type],
-            is_wustl = "@wustl.edu" in email or "@email.wustl.edu" in email
+            type=USR_URL_TYPE[u_type]
         )
 
         user.set_password(password)
@@ -125,8 +124,6 @@ class User(AbstractBaseUser):
     can_review_sponsors = models.BooleanField(default=False)
     max_applications = models.IntegerField(default=1)
     email_subscribed = models.BooleanField(default=False)
-
-    is_wustl = models.BooleanField(default=False)
 
     objects = UserManager()
 
