@@ -10,7 +10,7 @@
 
     {% else %}
 
-        <p class="lead">Welcome to HackUPC! Please, confirm your online attendance below:</p>
+        <p class="lead">Welcome to Hack WashU! Please, confirm your online attendance below:</p>
         <form action="" method="post">
             {% csrf_token %}
             <input type="hidden" name="app_id" value="{{ application.uuid }}"/>

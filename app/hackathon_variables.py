@@ -26,21 +26,21 @@ HACKATHON_CONTACT_EMAIL = os.environ.get('DEV_EMAIL', 'organizer@hackwashu.io')
 # Hackathon logo url, will be used on all emails
 HACKATHON_LOGO_URL = 'https://www.hackwashu.io/img/hackwashu-ab.32b7d0b4.svg'
 
-HACKATHON_OG_IMAGE = 'https://hackupc.com/ogimage.png?v=2021'
+HACKATHON_OG_IMAGE = 'https://www.hackwashu.io/img/hackwashu-ab.32b7d0b4.svg'
 # (OPTIONAL) Track visits on your website
 HACKATHON_GOOGLE_ANALYTICS = 'G-FSJQ7KKMGF'
 # (OPTIONAL) Hackathon Twitter user
-HACKATHON_TWITTER_ACCOUNT = 'hackupc'
+# HACKATHON_TWITTER_ACCOUNT = 'hackupc'
 # (OPTIONAL) Hackathon Facebook page
-HACKATHON_FACEBOOK_PAGE = 'hackupc'
+# HACKATHON_FACEBOOK_PAGE = 'hackupc'
 # (OPTIONAL) Hackathon YouTube channel
 HACKATHON_YOUTUBE_PAGE = 'UCiiRorGg59Xd5Sjj9bjIt-g'
 # (OPTIONAL) Hackathon Instagram user
-HACKATHON_INSTAGRAM_ACCOUNT = 'hackupc'
+HACKATHON_INSTAGRAM_ACCOUNT = 'hackwashu'
 # (OPTIONAL) Hackathon Medium user
-HACKATHON_MEDIUM_ACCOUNT = 'hackupc'
+# HACKATHON_MEDIUM_ACCOUNT = 'hackupc'
 # (OPTIONAL) Github Repo for this project (so meta)
-HACKATHON_GITHUB_REPO = 'https://github.com/hackupc/registration/'
+HACKATHON_GITHUB_REPO = 'https://github.com/hack-washu/myhackwashu'
 
 # (OPTIONAL) Applications deadline
 HACKATHON_APP_DEADLINE = timezone.datetime(2022, 9, 16, 23, 59, tzinfo=timezone.pytz.timezone(TIME_ZONE))
@@ -68,7 +68,7 @@ BAGGAGE_ENABLED = True
 BAGGAGE_PICTURE = True
 
 # Reimbursement configuration
-REIMBURSEMENT_ENABLED = True
+REIMBURSEMENT_ENABLED = False
 DEFAULT_REIMBURSEMENT_AMOUNT = 100
 CURRENCY = '€'
 REIMBURSEMENT_EXPIRY_DAYS = 5
@@ -97,7 +97,7 @@ SLACK = {
 
 # Hardware configuration
 # Hardware request time length (in minutes)
-HARDWARE_ENABLED = True
+HARDWARE_ENABLED = False
 #Hardware request time length (in minutes)
 HARDWARE_REQUEST_TIME = 15
 
@@ -132,9 +132,9 @@ DISCORD_HACKATHON = False
 HYBRID_HACKATHON = True
 N_MAX_LIVE_HACKERS = 350
 
-SERVER_EMAIL = 'MyHackUPC <server@my.hackupc.com>'
+SERVER_EMAIL = 'MyHackWashU <organizers@hackwashu.io>'
 
 CODE_CONDUCT_LINK = 'https://legal.hackersatupc.org/hackupc/code_of_conduct'
 LEGAL_LINK = 'https://legal.hackersatupc.org/hackupc/legal_notice'
-PRIVACY_LINK = 'https://legal.hackersatupc.org/hackupc/privacy_and_cookies'
+PRIVACY_LINK = 'https://docs.google.com/document/d/1lU2Jg9d9MVRokEEiWw8N-aMKH8suRlZhjiT56oI6K9o/edit#heading=h.g8lp823ap289'
 TERMS_LINK = 'https://legal.hackersatupc.org/hackupc/terms_and_conditions'

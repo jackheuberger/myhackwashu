@@ -313,7 +313,7 @@ class HackerApplicationForm(_BaseApplicationForm, _HackerMentorApplicationForm, 
         # Fields that we only need the first time the hacker fills the application
         # https://stackoverflow.com/questions/9704067/test-if-django-modelform-has-instance
         if not self.instance.pk:
-            fields['HackUPC Polices'] = {
+            fields['HackWashU Polices'] = {
                 'fields': polices_fields,
                 'description': '<p style="color: margin-top: 1em;display: block;'
                                'margin-bottom: 1em;line-height: 1.25em;">We, Hackers at UPC, '
@@ -343,7 +343,7 @@ class HackerApplicationForm(_BaseApplicationForm, _HackerMentorApplicationForm, 
             'projects': 'You can talk about about past hackathons, personal projects, awards etc. '
                         '(we love links) Show us your passion! :D',
             'reimb_amount': 'We try our best to cover costs for all hackers, but our budget is limited',
-            'resume': 'Accepted file formats: %s' % (', '.join(extensions) if extensions else 'Any'),
+            'resume': 'Accepted file formats: %s. (<a href="https://github.com/Hack-WashU/info-2022/blob/main/Applications.md#why-do-we-require-a-resume">Why do we require a resume?</a>)' % (', '.join(extensions) if extensions else 'Any'),
             'origin': "Please select one of the dropdown options or write 'Others'. If the dropdown doesn't show up,"
                       " type following this schema: <strong>city, nation, country</strong>"
         }
@@ -452,7 +452,7 @@ class VolunteerApplicationForm(_BaseApplicationForm, _HackerMentorVolunteerAppli
         # Fields that we only need the first time the hacker fills the application
         # https://stackoverflow.com/questions/9704067/test-if-django-modelform-has-instance
         if not self.instance.pk:
-            fields['HackUPC Polices'] = {
+            fields['HackWashU Polices'] = {
                 'fields': polices_fields,
                 'description': '<p style="color: margin-top: 1em;display: block;'
                                'margin-bottom: 1em;line-height: 1.25em;">We, Hackers at UPC, '
@@ -591,7 +591,7 @@ class MentorApplicationForm(_BaseApplicationForm, _HackerMentorApplicationForm, 
         # Fields that we only need the first time the hacker fills the application
         # https://stackoverflow.com/questions/9704067/test-if-django-modelform-has-instance
         if not self.instance.pk:
-            fields['HackUPC Polices'] = {
+            fields['HackWashU Polices'] = {
                 'fields': polices_fields,
                 'description': '<p style="color: margin-top: 1em;display: block;'
                                'margin-bottom: 1em;line-height: 1.25em;">We, Hackers at UPC, '
@@ -637,7 +637,7 @@ class MentorApplicationForm(_BaseApplicationForm, _HackerMentorApplicationForm, 
             'lennyface': 'tip: you can chose from here <a href="http://textsmili.es/" target="_blank">'
                          ' http://textsmili.es/</a>',
             'participated': 'You can talk about about past hackathons or any other events. ',
-            'resume': 'Accepted file formats: %s' % (', '.join(extensions) if extensions else 'Any'),
+            'resume': 'Accepted file formats: %s.' % (', '.join(extensions) if extensions else 'Any'),
         }
 
         widgets = {
@@ -743,7 +743,7 @@ class SponsorForm(OverwriteOnlyModelFormMixin, BootstrapFormMixin, ModelForm):
             polices_fields.append({'name': 'diet_notice', 'space': 12})
         # Fields that we only need the first time the hacker fills the application
         # https://stackoverflow.com/questions/9704067/test-if-django-modelform-has-instance
-        fields['HackUPC Polices'] = {
+        fields['HackWashU Polices'] = {
             'fields': polices_fields,
             'description': '<p style="color: margin-top: 1em;display: block;'
                            'margin-bottom: 1em;line-height: 1.25em;">We, Hackers at UPC, '
