@@ -38,13 +38,9 @@ class _BaseApplicationForm(OverwriteOnlyModelFormMixin, BootstrapFormMixin, Mode
     diet = forms.ChoiceField(label='Dietary requirements', choices=models.DIETS, required=False)
     phone_number = forms.CharField(required=False, widget=forms.TextInput(
         attrs={'class': 'form-control', 'placeholder': '+#########'}))
-    under_age = forms.TypedChoiceField(
+    age_confirm = forms.BooleanField(
         required=True,
-        label='How old are you?',
-        initial=False,
-        coerce=lambda x: x == 'True',
-        choices=((False, '18 or over'), (True, 'Between 14 (included) and 18')),
-        widget=forms.RadioSelect
+        label='I am enrolled full-time in college in the United States'
     )
 
     terms_and_conditions = forms.BooleanField(
@@ -201,7 +197,7 @@ class HackerApplicationForm(_BaseApplicationForm, _HackerMentorApplicationForm, 
             'fields': [{'name': 'university', 'space': 12}, {'name': 'degree', 'space': 12},
                        {'name': 'graduation_year', 'space': 12}, {'name': 'gender', 'space': 12},
                        {'name': 'other_gender', 'space': 12}, {'name': 'phone_number', 'space': 12},
-                       {'name': 'tshirt_size', 'space': 12}, {'name': 'under_age', 'space': 12},
+                       {'name': 'tshirt_size', 'space': 12}, {'name': 'age_confirm', 'space': 12},
                        {'name': 'lennyface', 'space': 12}, ],
             'description': 'Hey there, before we begin we would like to know a little more about you.'
         },
@@ -404,7 +400,7 @@ class VolunteerApplicationForm(_BaseApplicationForm, _HackerMentorVolunteerAppli
                        {'name': 'degree', 'space': 12}, {'name': 'graduation_year', 'space': 12},
                        {'name': 'gender', 'space': 12}, {'name': 'other_gender', 'space': 12},
                        {'name': 'phone_number', 'space': 12}, {'name': 'tshirt_size', 'space': 12},
-                       {'name': 'under_age', 'space': 12}, {'name': 'lennyface', 'space': 12}, ],
+                       {'name': 'age_confirm', 'space': 12}, {'name': 'lennyface', 'space': 12}, ],
             'description': 'Hey there, before we begin we would like to know a little more about you.'
         },
         'Volunteer Skills': {
@@ -561,7 +557,7 @@ class MentorApplicationForm(_BaseApplicationForm, _HackerMentorApplicationForm, 
                        {'name': 'degree', 'space': 12}, {'name': 'graduation_year', 'space': 12},
                        {'name': 'gender', 'space': 12}, {'name': 'other_gender', 'space': 12},
                        {'name': 'phone_number', 'space': 12}, {'name': 'tshirt_size', 'space': 12},
-                       {'name': 'under_age', 'space': 12}, {'name': 'lennyface', 'space': 12}, ],
+                       {'name': 'age_confirm', 'space': 12}, {'name': 'lennyface', 'space': 12}, ],
             'description': 'Hey there, before we begin we would like to know a little more about you.'
         },
         'Mentor Skills': {

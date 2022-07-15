@@ -20,7 +20,7 @@
                   {% include 'include/field.html' with desc='Name' value=app.name %}
                 {% else %}
                   {% include 'include/field.html' with desc='Name' value=app.user.name %}
-                  {% include 'include/field.html' with desc='Under age (-18)' value=app.under_age|yesno:'Yes,No,Maybe' %}
+                  {% include 'include/field.html' with desc='Under age (-18)' value=app.age_confirm|yesno:'Yes,No,Maybe' %}
                 {% endif %}
                 {% include 'include/field.html' with desc='Submitted' value=app.submission_date|naturaltime %}
                 {% include 'include/field.html' with desc='Phone' value=app.phone_number %}

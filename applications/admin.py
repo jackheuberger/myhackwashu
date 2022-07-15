@@ -13,7 +13,7 @@ class ApplicationAdmin(admin.ModelAdmin):
     list_display = ('user', 'name', 'votes', 'reimb', 'status',
                     'status_last_updated', 'diet')
     list_filter = ('status', 'first_timer', 'reimb', 'graduation_year',
-                   'university', 'origin', 'under_age', 'diet')
+                   'university', 'origin', 'age_confirm', 'diet')
     list_per_page = 200
     search_fields = ('user__name', 'user__email',
                      'description',)
@@ -45,7 +45,7 @@ class ApplicationAdmin(admin.ModelAdmin):
 
 class OtherApplicationAdmin(admin.ModelAdmin):
     list_display = ('user', 'name', 'status', 'status_last_updated', 'diet')
-    list_filter = ('status', 'under_age', 'diet')
+    list_filter = ('status', 'age_confirm', 'diet')
     list_per_page = 200
     search_fields = ('user__name', 'user__email',)
     ordering = ('submission_date',)

@@ -115,6 +115,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
+host = os.environ.get('POSTGRES_HOST')
+if host == 'localhost' or host == 'db':
+    dboptions = {}
+else:
+    dboptions = {'sslmode': 'require'}
+
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 DATABASES = {
@@ -123,8 +129,8 @@ DATABASES = {
             'NAME': os.environ.get('POSTGRES_DB', 'postgres'),
             'USER': os.environ.get('POSTGRES_USER', 'backenduser'),
             'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-            'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
-            'OPTIONS': {'sslmode': 'require'},
+            'HOST': host,
+            'OPTIONS': dboptions,
             'PORT': '5432',
         }
     }

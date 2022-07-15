@@ -150,7 +150,7 @@ class BaseApplication(models.Model):
     other_gender = models.CharField(max_length=50, blank=True, null=True)
 
     # Personal data (asking here because we don't want to ask birthday)
-    under_age = models.BooleanField()
+    age_confirm = models.BooleanField()
 
     phone_number = models.CharField(blank=True, null=True, max_length=16,
                                     validators=[RegexValidator(regex=r'^\+?1?\d{9,15}$',
