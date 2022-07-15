@@ -64,8 +64,8 @@ HACKATHON_ORGANIZER_EMAILS = ['jackheuberger@wustl.edu', 'e.sheehan@wustl.edu', 
 HACKATHON_DEV_EMAILS = ['organizer@hackwashu.io', ]
 
 # Baggage configuration
-BAGGAGE_ENABLED = True
-BAGGAGE_PICTURE = True
+BAGGAGE_ENABLED = False
+BAGGAGE_PICTURE = False
 
 # Reimbursement configuration
 REIMBURSEMENT_ENABLED = False
