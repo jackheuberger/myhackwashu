@@ -56,7 +56,7 @@ HACKATHON_LEAVE = ''
 HACKATHON_LIVE_PAGE = 'https://live.hackupc.com'
 
 # (OPTIONAL) Regex to automatically match organizers emails and set them as organizers when signing up
-REGEX_HACKATHON_ORGANIZER_EMAIL = '^.*@hackupc\.com$'
+# REGEX_HACKATHON_ORGANIZER_EMAIL = '^.*@hackupc\.com$'
 
 HACKATHON_ORGANIZER_EMAILS = ['jackheuberger@wustl.edu', 'e.sheehan@wustl.edu', 'b.hsu@wustl.edu', 'skim27@wustl.edu']
 
@@ -128,7 +128,7 @@ SUPPORTED_RESUME_EXTENSIONS = ['.pdf']
 MENTOR_EXPIRES = False
 VOLUNTEER_EXPIRES = False
 
-DISCORD_HACKATHON = False
+DISCORD_HACKATHON = True
 HYBRID_HACKATHON = True
 N_MAX_LIVE_HACKERS = 350
 

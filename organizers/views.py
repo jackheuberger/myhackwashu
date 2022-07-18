@@ -61,7 +61,7 @@ def add_comment(application, user, text):
 
 def hacker_tabs(user):
     new_app = models.HackerApplication.objects.exclude(vote__user_id=user.id)\
-        .filter(status=APP_PENDING, submission_date__lte=timezone.now() - timedelta(hours=2))
+        .filter(status=APP_PENDING)
     t = [('Application', reverse('app_list'), False), ('Review', reverse('review'), 'new' if new_app else '')]
     if user.has_dubious_access and getattr(settings, 'DUBIOUS_ENABLED', False):
         t.append(('Dubious', reverse('dubious'),
@@ -313,7 +313,6 @@ class ReviewApplicationView(ApplicationDetailView):
         return models.HackerApplication.objects \
             .exclude(Q(vote__user_id=self.request.user.id) | Q(user_id=self.request.user.id)) \
             .filter(status=APP_PENDING) \
-            .filter(submission_date__lte=timezone.now() - timedelta(hours=2)) \
             .annotate(count=Count('vote__calculated_vote')) \
             .filter(count__lte=max_votes_to_app) \
             .order_by('count', 'submission_date') \

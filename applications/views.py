@@ -21,6 +21,7 @@ from app.slack import SlackInvitationException
 from app.utils import reverse, hacker_tabs
 from app.views import TabsView
 from applications import models, emails, forms
+from applications.models import AcceptedResume
 from organizers.tables import SponsorFilter, SponsorListTableWithNoAction
 from organizers.views import _OtherApplicationsListView
 from user.mixins import IsHackerMixin, is_hacker, IsSponsorMixin, DashboardMixin
@@ -169,6 +170,7 @@ class HackerDashboard(DashboardMixin, TabsView):
             application = form.save(commit=False)
             application.user = request.user
             application.save()
+            AcceptedResume(application_id=application.pk, accepted='True').save()
             if email_subscribe:
                 application.user.email_subscribed = email_subscribe
                 application.user.save()
