@@ -28,7 +28,7 @@ HACKATHON_LOGO_URL = 'https://www.hackwashu.com/img/hackwashu-ab.32b7d0b4.svg'
 
 HACKATHON_OG_IMAGE = 'https://www.hackwashu.com/img/hackwashu-ab.32b7d0b4.svg'
 # (OPTIONAL) Track visits on your website
-HACKATHON_GOOGLE_ANALYTICS = 'G-FSJQ7KKMGF'
+HACKATHON_GOOGLE_ANALYTICS = 'G-EB2EF2CG26'
 # (OPTIONAL) Hackathon Twitter user
 # HACKATHON_TWITTER_ACCOUNT = 'hackupc'
 # (OPTIONAL) Hackathon Facebook page
