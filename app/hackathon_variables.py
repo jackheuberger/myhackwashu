@@ -22,11 +22,11 @@ if HEROKU_APP_NAME and not HACKATHON_DOMAIN:
 elif not HACKATHON_DOMAIN:
     HACKATHON_DOMAIN = 'localhost:80'
 # Hackathon contact email: where should all hackers contact you. It will also be used as a sender for all emails
-HACKATHON_CONTACT_EMAIL = os.environ.get('DEV_EMAIL', 'organizer@hackwashu.io')
+HACKATHON_CONTACT_EMAIL = os.environ.get('DEV_EMAIL', 'organizer@hackwashu.com')
 # Hackathon logo url, will be used on all emails
-HACKATHON_LOGO_URL = 'https://www.hackwashu.io/img/hackwashu-ab.32b7d0b4.svg'
+HACKATHON_LOGO_URL = 'https://www.hackwashu.com/img/hackwashu-ab.32b7d0b4.svg'
 
-HACKATHON_OG_IMAGE = 'https://www.hackwashu.io/img/hackwashu-ab.32b7d0b4.svg'
+HACKATHON_OG_IMAGE = 'https://www.hackwashu.com/img/hackwashu-ab.32b7d0b4.svg'
 # (OPTIONAL) Track visits on your website
 HACKATHON_GOOGLE_ANALYTICS = 'G-FSJQ7KKMGF'
 # (OPTIONAL) Hackathon Twitter user
@@ -61,7 +61,7 @@ HACKATHON_LIVE_PAGE = 'https://live.hackupc.com'
 HACKATHON_ORGANIZER_EMAILS = ['jackheuberger@wustl.edu', 'e.sheehan@wustl.edu', 'b.hsu@wustl.edu', 'skim27@wustl.edu']
 
 # (OPTIONAL) Send 500 errors to email while on production mode
-HACKATHON_DEV_EMAILS = ['organizer@hackwashu.io', ]
+HACKATHON_DEV_EMAILS = ['organizer@hackwashu.com', ]
 
 # Baggage configuration
 BAGGAGE_ENABLED = False
@@ -132,7 +132,7 @@ DISCORD_HACKATHON = True
 HYBRID_HACKATHON = True
 N_MAX_LIVE_HACKERS = 350
 
-SERVER_EMAIL = 'MyHackWashU <organizers@hackwashu.io>'
+SERVER_EMAIL = 'MyHackWashU <organizer@hackwashu.com>'
 
 CODE_CONDUCT_LINK = 'https://legal.hackersatupc.org/hackupc/code_of_conduct'
 LEGAL_LINK = 'https://legal.hackersatupc.org/hackupc/legal_notice'

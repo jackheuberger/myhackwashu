@@ -20,6 +20,6 @@ if [ "$DJANGO_SUPERUSER_USERNAME" ]
 then
     python manage.py createsuperuser \
         --noinput \
-        --email "organizer@hackwashu.io" \
-        --name "organizer@hackwashu.io" || true
+        --email "organizer@hackwashu.com" \
+        --name "organizer@hackwashu.com" || true
 fi
