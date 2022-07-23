@@ -40,7 +40,7 @@ class _BaseApplicationForm(OverwriteOnlyModelFormMixin, BootstrapFormMixin, Mode
         attrs={'class': 'form-control', 'placeholder': '+#########'}))
     age_confirm = forms.BooleanField(
         required=True,
-        label='I am enrolled full-time in college in the United States'
+        label='I am enrolled full-time in an accredited university or college. I understand that prizes may be different depending on if I am outside of the continental US.'
     )
 
     terms_and_conditions = forms.BooleanField(
