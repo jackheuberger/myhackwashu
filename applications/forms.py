@@ -5,6 +5,8 @@ from django.forms.utils import ErrorList
 from django.template.defaultfilters import filesizeformat
 from django.utils import timezone
 
+import logging
+
 from app.mixins import OverwriteOnlyModelFormMixin, BootstrapFormMixin
 from app.utils import validate_url
 from applications import models
@@ -79,7 +81,7 @@ class _BaseApplicationForm(OverwriteOnlyModelFormMixin, BootstrapFormMixin, Mode
         # Check that if it's the first submission hackers checks terms and conditions checkbox
         # self.instance.pk is None if there's no Application existing before
         # https://stackoverflow.com/questions/9704067/test-if-django-modelform-has-instance
-        if diet != 'None' and not diet_notice and not self.instance.pk:
+        if diet != 'None' and diet != "" and not diet_notice and not self.instance.pk:
             raise forms.ValidationError(
                 "In order to apply and attend you have to accept us to use your personal data related to your food "
                 "allergies and intolerances only in order to manage the catering service."
