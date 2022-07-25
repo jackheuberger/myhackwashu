@@ -47,9 +47,9 @@ class _BaseApplicationForm(OverwriteOnlyModelFormMixin, BootstrapFormMixin, Mode
 
     terms_and_conditions = forms.BooleanField(
         required=False,
-        label='I\'ve read, understand and accept <a href="/terms_and_conditions" target="_blank">%s '
-              'Terms & Conditions</a> and <a href="/privacy_and_cookies" target="_blank">%s '
-              'Privacy and Cookies Policy</a>.<span style="color: red; font-weight: bold;"> *</span>' % (
+        label='I\'ve read, understand and accept <u><a href="/terms_and_conditions" target="_blank">%s '
+              'Terms & Conditions</a></u> and <u><a href="/privacy_and_cookies" target="_blank">%s '
+              'Privacy and Cookies Policy</a></u>. I also agree to the <u><a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a></u>.<span style="color: red; font-weight: bold;"> *</span>' % (
                   settings.HACKATHON_NAME, settings.HACKATHON_NAME
               )
     )
@@ -61,7 +61,7 @@ class _BaseApplicationForm(OverwriteOnlyModelFormMixin, BootstrapFormMixin, Mode
     )
 
     email_subscribe = forms.BooleanField(required=False, label='Subscribe to our Marketing list in order to inform '
-                                                               'you about our next events.')
+                                                               'you about our next events. I authorize MLH to send me an email where I can further opt into the MLH Hacker, Events, or Organizer Newsletters and other communications from MLH')
 
     def clean_terms_and_conditions(self):
         cc = self.cleaned_data.get('terms_and_conditions', False)
@@ -227,7 +227,7 @@ class HackerApplicationForm(_BaseApplicationForm, _HackerMentorApplicationForm, 
 
     cvs_edition = forms.BooleanField(
         required=True,
-        label='I authorize Hack WashU to share my Resume with event sponsors. <span style="color: red; font-weight: bold;"> *</span>'
+        label='I authorize Hack WashU to share my Resume with event sponsors. I also authorize Hack WashU to share my information with MLH in accordance and in acceptance with the <u><a href="https://mlh.io/privacy">MLH Privacy Policy</a></u> and <u><a href="https://github.com/MLH/mlh-policies/blob/main/contest-terms.md">MLH Contest Terms and Conditions</a></u>. <span style="color: red; font-weight: bold;"> *</span>'
     )
 
     online = forms.BooleanField(
@@ -318,7 +318,7 @@ class HackerApplicationForm(_BaseApplicationForm, _HackerMentorApplicationForm, 
             fields['HackWashU Polices'] = {
                 'fields': polices_fields,
                 'description': '<p style="color: margin-top: 1em;display: block;'
-                               'margin-bottom: 1em;line-height: 1.25em;">We, Hackers at UPC, '
+                               'margin-bottom: 1em;line-height: 1.25em;">We, Hack WashU, '
                                'process your information to organize an awesome hackaton. It '
                                'will also include images and videos of yourself during the event. '
                                'Your data will be used for admissions mainly. We may also reach '
