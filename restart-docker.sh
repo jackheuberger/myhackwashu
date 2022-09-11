@@ -4,7 +4,7 @@ echo "checking updates...done"
 echo "migrating db..."
 python manage.py makemigrations
 python manage.py migrate sessions
-#python manage.py migrate
+python manage.py migrate
 echo "migrating db...done"
 echo "collecting static..."
 #python manage.py collectstatic --no-input
