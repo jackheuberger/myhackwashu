@@ -4,10 +4,10 @@ echo "checking updates...done"
 echo "migrating db..."
 python manage.py makemigrations
 python manage.py migrate sessions
-python manage.py migrate
+#python manage.py migrate
 echo "migrating db...done"
 echo "collecting static..."
-python manage.py collectstatic --no-input
+#python manage.py collectstatic --no-input
 echo "collecting static...done"
 echo "removing all pyc..."
 find . -name \*.pyc -delete
@@ -16,10 +16,10 @@ echo "Deploy completed. The game is on!"
 
 echo "creating superuser..."
 
-if [ "$DJANGO_SUPERUSER_USERNAME" ]
-then
-    python manage.py createsuperuser \
-        --noinput \
-        --email "organizer@hackwashu.com" \
-        --name "organizer@hackwashu.com" || true
-fi
+#if [ "$DJANGO_SUPERUSER_USERNAME" ]
+#then
+#    python manage.py createsuperuser \
+#        --noinput \
+#        --email "organizer@hackwashu.com" \
+#        --name "organizer@hackwashu.com" || true
+#fi
